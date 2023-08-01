@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  cloudflare-dns:
+    build: .
+    volumes:
+      - ./:/app
+    command: ["python3", "-u", "main.py"]
+    environment:
+      - TZ=Asia/Taipei
