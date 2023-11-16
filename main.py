@@ -89,18 +89,21 @@ headers = {
 
 while 1:
     # Find zone id
-    zone_id = find_zone_id()
-    if not zone_id:
-        sys.exit()
+    try:
+        zone_id = find_zone_id()
+        if not zone_id:
+            sys.exit()
 
-    # Find record id
-    record_id = find_record_id(zone_id)
-    # Get current IP
-    ip = current_ip()
-    # Update record's IP
-    if update_record_ip(zone_id, record_id, ip):
-        pprint(f"success:true,ip update : {ip}")
-    else:
-        pprint("success:false")
+        # Find record id
+        record_id = find_record_id(zone_id)
+        # Get current IP
+        ip = current_ip()
+        # Update record's IP
+        if update_record_ip(zone_id, record_id, ip):
+            pprint(f"success:true,ip update : {ip}")
+        else:
+            pprint("success:false")
 
-    time.sleep(SLEEP)
+        time.sleep(SLEEP)
+    except:
+        time.sleep(SLEEP)
